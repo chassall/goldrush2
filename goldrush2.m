@@ -16,7 +16,7 @@ ListenChar(0);
 %% Run flags
 
 justTesting = 0; % Testing mode - run in a smaller window
-krigolsonLab = 0; % 1 if experiment is run in the Krigolson Lab, 0 otherwise (if 1, DataPIXX2 needed to send markers)
+krigolsonLab = 1; % 1 if experiment is run in the Krigolson Lab, 0 otherwise (if 1, DataPIXX2 needed to send markers)
 
 %% Define control keys
 
@@ -26,18 +26,18 @@ ExitKey = KbName('ESCAPE'); % Exit program
 %% Display properties (CHANGE THESE)
 
 % Testing room (POOCHIE; 75 Hz, 2 ms response rate, 1920 by 1080 pixels, LG W2242TQ-GF, Seoul, South Korea)
-% viewingDistance = 620; % mm, approximately
-% screenWidth = 478; % mm
-% screenHeight = 268; % mm
-% horizontalResolution = 1920; % Pixels
-% verticalResolution = 1080; % Pixels
+viewingDistance = 620; % mm, approximately
+screenWidth = 478; % mm
+screenHeight = 268; % mm
+horizontalResolution = 1920; % Pixels
+verticalResolution = 1080; % Pixels
 
 % Cam's laptop (BOB; Macbook Air)
-viewingDistance = 560; % mm, approximately
-screenWidth = 286; % mm
-screenHeight = 179; % mm
-horizontalResolution = 1440; % Pixels
-verticalResolution = 980; % Pixels
+% viewingDistance = 560; % mm, approximately
+% screenWidth = 286; % mm
+% screenHeight = 179; % mm
+% horizontalResolution = 1440; % Pixels
+% verticalResolution = 980; % Pixels
 
 % Cam's office (MARGE; iMac)
 % viewingDistance = 700; % mm, approximately
@@ -270,7 +270,7 @@ try
         if isSparse(blockCounter)
             sCount = sCount + 1;
             mapIndex = sMapOrder(sCount);
-            thisMap = sMaps{sCount};
+            thisMap = double(sMaps{sCount});
             thisBlockTexture = sTexture;
             blockMarker = 1;
             preMovementMarker = 2;
@@ -282,7 +282,7 @@ try
         else
             aCount = aCount + 1;
             mapIndex = aMapOrder(aCount);
-            thisMap = aMaps{aCount};
+            thisMap = double(aMaps{aCount});
             thisBlockTexture = aTexture;
             blockMarker = 11;
             preMovementMarker = 12;
